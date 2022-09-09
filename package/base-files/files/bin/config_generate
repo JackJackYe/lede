@@ -106,7 +106,7 @@ generate_network() {
 	# Force bridge for "lan" as it may have other devices (e.g. wireless)
 	# bridged
 	[ "$1" = "lan" -a -z "$ports" ] && {
-		ports="$ifname"
+		ports="$ifname  ra0 rai0"
 	}
 
 	[ -n "$ports" ] && {
@@ -128,7 +128,7 @@ generate_network() {
 		delete network.$1
 		set network.$1='interface'
 		set network.$1.type='$type'
-		set network.$1.ifname='$ifname ra0 rai0'
+		set network.$1.ifname='$ifname'
 		set network.$1.proto='none'
 	EOF
 
